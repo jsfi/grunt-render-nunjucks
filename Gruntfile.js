@@ -13,9 +13,6 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         eslint: {
-            options: {
-                configFile: '.eslintrc-cli'
-            },
             target: ['tasks/*.js', 'lib/*.js']
         },
 
