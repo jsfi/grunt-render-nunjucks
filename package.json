@@ -15,12 +15,7 @@
   "bugs": {
     "url": "https://github.com/jsfi/grunt-render-nunjucks/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  ],
+  "license" : "MIT",
   "engines": {
     "node": ">=4.0.0"
   },
