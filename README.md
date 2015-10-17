@@ -2,6 +2,8 @@
 
 > Compile nunjucks-templates to static files
 
+![dependencies](https://david-dm.org/jsfi/grunt-render-nunjucks.svg)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.0` and node `>=4.0.0`
 
