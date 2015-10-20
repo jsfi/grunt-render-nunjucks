@@ -42,6 +42,54 @@ grunt.initConfig({
 });
 ```
 
+### Usage Examples
+
+#### Minimal Options
+
+```js
+grunt.initConfig({
+    renderNunjucks: {
+        files: [
+            {
+                expand: true,
+                cwd: 'src/views/templates',
+                src: ['**/*.*'],
+                dest: 'build'
+            }
+        ]
+    }
+});
+```
+
+#### Custom Options
+
+```js
+grunt.initConfig({
+    renderNunjucks: {
+        options: {
+            layoutDir: 'src/views/layouts',
+            partialDir: 'src/views/partials'
+        },
+        dist: {
+            options: {
+                data: 'src/data.json',
+                configureRenderer: function(env) {
+                    env.addGlobal('currentYear', (new Date()).getFullYear());
+                }
+            },
+            files: [
+                {
+                    expand: true,
+                    cwd: 'src/views/templates',
+                    src: ['**/*.*'],
+                    dest: 'build'
+                }
+            ]
+        }
+    }
+});
+```
+
 ### Options
 
 #### options.data
@@ -126,53 +174,24 @@ Default value: `'multiple'`
 
 This beautifies the output by removing empty lines. A special case is the value `multiple`. This value merges multiple empty lines into one.
 
-### Usage Examples
+#### options.data - pages
 
-#### Minimal Options
-
-```js
-grunt.initConfig({
-    renderNunjucks: {
-        files: [
-            {
-                expand: true,
-                cwd: 'src/views/templates',
-                src: ['**/*.*'],
-                dest: 'build'
-            }
-        ]
-    }
-});
-```
-
-#### Custom Options
+A special property in the `options.data` is the pages property. If the path of the rendered template matches with a key in the pages object, the values will be merged into the data that is available in the template.
 
 ```js
-grunt.initConfig({
-    renderNunjucks: {
-        options: {
-            layoutDir: 'src/views/layouts',
-            partialDir: 'src/views/partials'
-        },
-        dist: {
-            options: {
-                data: 'src/data.json',
-                configureRenderer: function(env) {
-                    env.addGlobal('currentYear', (new Date()).getFullYear());
-                }
-            },
-            files: [
-                {
-                    expand: true,
-                    cwd: 'src/views/templates',
-                    src: ['**/*.*'],
-                    dest: 'build'
-                }
-            ]
+data: {
+    title: "Title",
+    pages: {
+        "test.html": {
+            title: "Test - Title"
         }
     }
-});
+}
 ```
+
+In this example the title will be `Title` in all templates, except in the `test.html` file, where it is overwritten with `Test - Title`.
+
+If the files are configured as a [dynamic files object](http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically), the cwd path will be removed from the path that is matched with the key in the pages object.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

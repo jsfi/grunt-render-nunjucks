@@ -119,6 +119,33 @@ module.exports = function(grunt) {
                         dest: 'tmp/dataEnv'
                     }
                 ]
+            },
+
+            dataNestedObj: {
+                options: {
+                    data: {
+                        title: 'Title',
+                        main: 'Main',
+                        footer: 'Footer',
+                        pages: {
+                            'test.html': {
+                                title: 'Test - Title',
+                                main: 'Test - Main',
+                                footer: 'Test - Footer'
+                            }
+                        }
+                    },
+                    layoutDir: 'test/fixtures/layouts',
+                    partialDir: 'test/fixtures/partials'
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'test/fixtures/templates',
+                        src: ['**/*.*'],
+                        dest: 'tmp/dataNestedObj'
+                    }
+                ]
             }
         },
 

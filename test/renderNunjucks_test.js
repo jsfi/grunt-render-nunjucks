@@ -23,11 +23,6 @@ var grunt = require('grunt');
 */
 
 exports.nunjucks = {
-    setUp: function(done) {
-        // setup here if necessary
-        done();
-    },
-
     dataObj: function(test) {
         test.expect(1);
 
@@ -73,6 +68,16 @@ exports.nunjucks = {
 
         var actual = grunt.file.read('tmp/dataEnv/test.html');
         var expected = grunt.file.read('test/expected/test.html');
+        test.equal(actual, expected, 'data from environment');
+
+        test.done();
+    },
+
+    dataNestedObj: function(test) {
+        test.expect(1);
+
+        var actual = grunt.file.read('tmp/dataNestedObj/test.html');
+        var expected = grunt.file.read('test/expected/testNested.html');
         test.equal(actual, expected, 'data from environment');
 
         test.done();
