@@ -49,14 +49,16 @@ grunt.initConfig({
 ```js
 grunt.initConfig({
     renderNunjucks: {
-        files: [
-            {
-                expand: true,
-                cwd: 'src/views/templates',
-                src: ['**/*.*'],
-                dest: 'build'
-            }
-        ]
+        targetName: {
+            files: [
+                {
+                    expand: true,
+                    cwd: 'src/views/templates',
+                    src: ['**/*.*'],
+                    dest: 'build'
+                }
+            ]
+        }
     }
 });
 ```
