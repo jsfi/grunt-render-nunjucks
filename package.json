@@ -23,7 +23,7 @@
     "test": "node node_modules/eslint/bin/eslint.js tasks/*.js lib/*.js && grunt test"
   },
   "devDependencies": {
-    "eslint": "^3.18.0",
+    "eslint": "^6.6.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-nodeunit": "^1.0.0",
